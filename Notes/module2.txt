@@ -37,7 +37,7 @@ console.log('1' + '1') // 11
 
 Blue text in Chrome console is a number
 
-console.log(34123) // 34bvp b b0123
+console.log(34123) // 34123
 
 Numbers in JS behave like numbers in math
 
@@ -260,3 +260,290 @@ function add(num1, num2) {
 function multiply(num1, num2) {
 	console.log(num1 * num2)
 }
+
+
+
+----------------------------------------------------------
+
+Arrow Functions
+
+New way to make anonymous functions in ES6.
+
+Basically remove the function keyword, and add => after parenthesis.
+
+// Normal function (with Function expression)
+const normalFunction = function (arg1, arg2) {
+	// Do something
+}
+
+// Arrow function
+const arrowFunction = (arg1, arg2) => {
+	// Do something
+}
+
+Syntax can change based on two factors
+1. The number of arguments required
+2. Whether you'd like an implicit return
+
+### If you supply ZERO arguments to your arrow function, you can substitute the parenthesis with an underscore ( _ )
+
+const zeroArgs = () => {/* do something */}
+const zeroWithUnderScore = _ => {/* do something */}
+
+### If you supply only one argument, you can remove the parenthesis
+
+const oneArg = arg1 => {/* do something */}
+const oneArgWithParenthesis = (arg1) => {/* do something */}
+
+### If you supply two or more arguments, you need to use the basic arrow function syntax
+
+const twoOrMoreArgs = (arg1, arg2) => {/* do something */}
+
+
+
+### Arrow functions automatically create a return statement if two conditions are present:
+1. You write only one line of code in the function
+2. That line of code is not enclosed in curly braces ( {} )
+
+Reduce three lines of code into a single line
+// 3 lines of code for a normal function
+const sumNormal = function (num1, num2) {
+	return num1 + num2
+}
+
+// Replaced with one line of code with arrow function
+const sumArrow = (num1, num2) => num1 + num2
+
+
+Arrow function exercises
+1. Make a function named ten that takes in zero arguments and return the value 10. Try using both () and _ syntax.
+
+const ten = _ => 10
+const ten = () => 10
+
+2. Make a function named logger that takes in one argument. It logs the argument you passed into it. Try it with and without parenthesis ().
+
+const logger = arg1 => console.log(arg1)
+const logger = (arg1) => console.log(arg1)
+
+
+3. Make a function called add that adds two numbers together. Try it with and without implicit returns.
+
+const add = (arg1, arg2) => arg1 + arg2
+const add = (arg1, arg2) => {
+	return arg1 + arg2
+}
+
+4. Make a function called multiply that multiplies two numbers together. Try it with and without implicit returns.
+
+const multiply = (arg1, arg2) => arg1 * arg2
+const multiply = (arg1, arg2) => {
+	return arg1 * arg2
+}
+
+------------------------------------------------------
+
+Intro to Objects
+
+Important because you can only pass two types of data around as variables - primitives and objects.
+
+Object is data that contains key-value pairs.
+
+
+Key-value pairs within curly braces.
+Multiple key-value pairs are separated with commas.
+
+const anObject = {
+	key1: 'value1',
+	key2: 'value2',
+	key3: 'value3'
+	// ...
+}
+
+Each key gives you a reference to a value.
+Dictionary analogy - keys are the words, values are definition of the word.
+
+const dictionary = {
+	dream: "a series of thoughts, images, and sensations occurring in a person's mind during sleep",
+	happy: "feeling or showing pleasure or contentment"
+}
+
+
+Compare objects in JS to objects in real life.
+
+const macbook = {
+	operatingSystem: 'macOS Sierra',
+	screenResolution: '2880x1800',
+	screenSize: '15.4 inch',
+	usbPorts: 2,
+	storage: '512gb'
+	// ... Other specs
+}
+
+
+Objects can contain any value that is valid in JS.
+You can store primitives and other objects.
+
+const anObject = {
+	string: 'Yay',
+	number: 1,
+	boolean: true,
+	anotherObject: {},
+	afunction: function () {},
+	anArray: []
+}
+
+
+Object keys are called Properties
+
+Two methods to get the value of a property.
+
+### Dot notation
+Write the name of the object, followed by . followed by the property name
+
+const prop = object.property
+
+const macbookStorage = macbook.storage
+console.log(macbookStorage) // 512gb
+
+
+### Bracket notation
+Write the name of the object, followed by a string of the property in square brackets [].
+
+const macbookStorage = macbook['storage']
+console.log(macbookStorage) // 512gb
+
+
+Dot notation is normally used.
+Bracket notation is used in special occassions:
+1. When your property name is an invalid identifier
+2. When you need to get the value of a property through a variable
+
+### Anything that can't be a variable name is an invalid identifier
+
+const firstName = ObjectWithInvalidIdentifier['First Name']
+
+
+### Getting the value of a property through a variable
+
+const propertyToGet = 'storage'
+
+const macbookStorage = macbook[propertyToGet]
+console.log(macbookStorage) // 512gb
+
+
+
+### Setting the value of a property
+Value of a property can be set using dot or bracket notation
+
+// Dot notation
+macbook.storage = '256gb'
+
+// Bracket notation
+macbook['usbPorts'] = 2
+
+console.log(macbook)
+// {
+//   storage: '256gb',
+//   usbPorts: 2
+// }
+
+
+
+### Deleting Properties
+Delete key-value pairs from objects with the delete keyword.
+
+delete object.property
+
+delete macbook.storage
+console.log(macbook)
+// The storage property is already deleted, hence you don't see it anymore when you console.log it
+// {
+//   usbPorts: 2
+// }
+
+
+### Functions are objects in JavaScript
+They can have properties too.
+
+function sayName () {}
+sayName.property = 'Hello!'
+
+console.log(sayName.property) // Hello!
+
+
+### The properties that contain functions as their values are called methods
+
+const anObject = {
+	aMethod: function() {
+		// Do something in function
+	}
+}
+
+// playMusic is a method of macbook
+const macbook = {
+	playMusic: function () {
+		/* some code to play music */
+	}
+}
+
+### To call a method, write parenthesis () after getting the method through the dot or bracket notation
+
+// Calling a method with the dot notation
+macbook.playMusic()
+
+// Calling a method with the bracket notation
+macbook['playMusic']()
+
+
+### You can also add arguments to methods
+
+const greeter = {
+	sayHello: function (name) {
+		console.log('Hello ' + name + '!')
+	}
+}
+
+greeter.sayHello('Howard') // Hello Howard!
+
+Exercises:
+
+1. Make an empty object
+const object = {}
+
+2. Make a property for your object that can be accessed with a dot notation.
+object.property1 = 'value1'
+
+3. Make a property for your object that can only be accessed with the bracket notation.
+object['property 2'] = 'value2'
+
+4. Get the value of a property with the dot notation
+const objectProperty1 = object.property1
+console.log(objectProperty1)
+
+5. Get the value of a property with the square bracket notation
+const objectProperty2 = object['property 2']
+console.log(objectProperty2)
+
+6. Set the value of a property with the dot notation
+object.property1 = 'new property 1'
+
+7. Set the value of a property with the square bracket notation
+object['property 2'] = 'new property 2'
+
+8. Make a method. Call this method
+object.aMethodOriginal = function () {
+	console.log('I called a method.')
+}
+
+object.aMethodOriginal() // I called a method
+
+9. Make a method that takes in an argument. Call this method
+object.aMethod = function (arg1) {
+	console.log(arg1)
+}
+
+object.aMethod('hello') // hello
+
+
+-------------------------------------------------------
