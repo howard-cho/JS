@@ -1,0 +1,262 @@
+JavaScript has 6 basis data types. Called primitives.
+
+1. String
+2. Number
+3. Boolean
+4. Null
+5. Undefined
+6. Symbol
+
+--- String - represents text data in JavaScript
+
+`JavaScript is easier than I thought!`
+
+Black text in Chrome console is a string
+
+console.log(`JavaScript is easier than I thought!`)
+
+
+Strings with apostrophes (') can be created with single quotation marks if you add a backslash \ before the apostrophe.
+
+'It\'s my birthday today!'
+
+They can also be created with backticks (``).
+Strings created with backticks are called template strings.
+
+`It's my birthday today!`
+
+
+Strings can be added together with the + operator.
+Called concatenation.
+
+console.log('Super' + 'man') // Superman
+console.log('1' + '1') // 11
+
+
+--- Number - represents numeric data
+
+Blue text in Chrome console is a number
+
+console.log(34123) // 34bvp b b0123
+
+Numbers in JS behave like numbers in math
+
+console.log(1 + 1) // 2
+console.log(20 + 2) // 22
+console.log(22 - 2) // 20
+console.log(22 * 2) // 44
+console.log(22 / 2) // 11
+
+To find the remainder of a number: %
+
+// Find the remainder of 22 / 5
+console.log(22 % 5) // 2 
+
+
+--- Boolean - true or false
+
+Blue text in Chrome console
+
+
+--- Null and undefined
+
+--- Symbol - new primitive in ES6
+
+
+
+--- VARIABLES
+
+Declare variables with the following syntax
+
+const variableName = 'value'
+
+Variable naming rules:
+1. Must be one word
+2. Must consist only of letters, numbers or underscores (0-9, a-z, A-Z, _)
+3. It cannot begin with a number
+4. It cannot be a reserved keyword
+
+Should use camelCase
+
+
+Variable values can be primitive data types or objects (like arrays and functions)
+
+= means assignment in JS
+You set (or assign) the value on the right hand side of the = to the left hand side of the =
+
+const initialApples = 4
+
+
+
+Equations that need to be evaluated are called expressions in JS.
+
+const initialApples = 4
+const applesToBuy = 27
+
+// initialApples + applesToBuy is an expression
+
+const totalApples = initialApples + applesToBuy
+
+
+Keyword to declare variables:
+const | let | var
+
+const and let are keywords made available in ES6
+
+const - cannot reassign variable with a new value
+
+let - you can reassign with a new value
+
+
+
+Use const over let. No more var
+
+
+
+
+--- FUNCTIONS
+
+A function is a block of code that executes tasks in a specific order
+
+function functionName (parameters) {
+	// Do stuff here
+}
+
+Function naming:
+1. Must be one word
+2. Must consist only of letters, numbers or underscores (0-9, a-z, A-Z, _)
+3. Cannot begin with a number
+4. Cannot use any reserved keywords
+
+
+
+
+
+To use (or invoke, or call, or execute) a function:
+
+functionName()
+
+// Declaring a function
+function sayHello() {
+	console.log('Hello world!')
+}
+
+
+// Using a function
+sayHello()
+
+
+Indent with 2 spaces or a tab key.
+
+
+
+
+Parameters are optional, comma-separated list of variables you wish to declare for your function. They can be assigned values when you use the function.
+
+You can have any number of parameters.
+
+function functionName(param1, param2, param3) {
+	// Do stuff here
+}
+
+
+To assign values to parameters, you pass in arguments.
+Arguments are comma-separated values you use in the function call.
+
+The first argument gets assigned to the first parameter, the second argument to the second parameter, and so on.
+
+functionName('arg1', 'arg2')
+
+function sayName(firstName, lastName) {
+	console.log('firstName is ' + firstName)
+	console.log('lastName is ' + lastName)
+}
+
+sayName('Howard', 'Cho')
+// firstName is Howard
+// lastName is Cho
+
+
+If you declared a parameter, but did not pass an argument to it, your paramter would be undefined.
+sayName()
+// firstName is undefined
+// lastName is undefined
+
+
+
+The return statement
+When JS sees a return statement, it stops executing the rest of the function and "returns" the value (passes the value back to expression that called the function call).
+
+function get2() {
+	return 2
+	console.log('blah') // This is not executed
+}
+
+If the return value is an expression, JavaScript evaluates the expression before returning the value.
+
+function add2(num) {
+	return num + 2
+}
+
+const number = add2(8)
+console.log(number) // 10
+
+
+JavaScript can only pass around two types of values. Everything else needs to be evaluated first.
+1. Primitives (Strings, numbers, booleans, etc)
+2. Objects (functions, arrays, other objects)
+
+
+A function call is an expression
+function add2(num) {
+	return num + 2
+}
+
+// add2 is a function. It can be passed around
+const anotherAdd2 = add2
+console.log(anotherAdd2) // function
+anotherAdd2(3) // 5
+
+----------------------------------------------
+
+function add2(num) {
+	return num + 2
+}
+
+// add2(2) is an expression, It needs to be evaluated first.
+const sum = add2(2)
+console.log(sum) // 4
+
+
+When functions are declared with a function declaration, they are hoisted to the top of your scope.
+
+You should not rely on hoisting. Declare your functions before you use them.
+
+
+Declaring a function with a function expression:
+
+// Functions without a name are called 'anonymous functions'
+const sayHello = function () {
+	console.log('This is declared with a function expression!')
+}
+
+*** Functions declared with function expressions are not automatically hoisted to the top of your scope. ***
+
+sayHello() // Error, sayHello is not defined
+const sayHello = function() {
+	console.log(aFunction)
+}
+
+
+
+function logger(something) {
+	console.log(something)
+}
+
+function add(num1, num2) {
+	console.log(num1 + num2)
+}
+
+function multiply(num1, num2) {
+	console.log(num1 * num2)
+}

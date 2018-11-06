@@ -1,0 +1,25 @@
+{
+   "python.pythonPath": "C:\\Users\\Howard\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe",
+   "editor.fontSize": 16,
+   "editor.formatOnPaste": true,
+   "editor.multiCursorModifier": "ctrlCmd",
+   "editor.snippetSuggestions": "top",
+   "workbench.colorTheme": "Atom One Dark",
+   "window.zoomLevel": 0,
+   "editor.renderIndentGuides": false,
+   "editor.formatOnSave": true,
+   "editor.wordWrap": "on",
+   "html.format.wrapLineLength": 0,
+   "javascript.validate.enable": false,
+   "prettier.disableLanguages": [
+       "javascript",
+       "javascriptreact",
+       "html",
+       "json"
+   ],
+   "standard.validate": [
+       "javascript",
+       "javascriptreact"
+   ],
+   "standard.autoFixOnSave": true
+}
