@@ -547,3 +547,247 @@ object.aMethod('hello') // hello
 
 
 -------------------------------------------------------
+
+If/else statements (control flow statement)
+
+if (condition) {
+	// Do something
+} else {
+	// Do some other thing
+}
+
+If the condition evaluates to true, JavaScript executes the code from the if block.
+If the condition evaluates to false, JavaScript executes the code from the else block.
+
+
+### If you need to check more than one condition, you can use else if, which goes between if and else.
+
+If the first condition evaluates to false, JavaScript checks the condition in the next else if block and see whether it evaluates to true. It goes on and on until all else if blocks are exhausted.
+
+
+To check whether a condition evaluates to true or false, JavaScript relies on two things:
+1. Comparison operators
+2. Truthy and falsey values
+
+
+### 4 main types of comparison operators
+1. Greater than ( > ) or greater or equals to ( >= )
+2. Smaller than ( < ) or smaller or equals to ( <= )
+3. Strictly equal ( === ) or equal ( == )
+4. Strictly unequal ( !== ) or unequal ( != )
+
+
+JavaScript is a loosely-typed language. When we declare variables, we don't care what type of value goes into the variable.
+
+When comparing things with strictly equal ( === ) or strictly unequal ( !== ), JavaScript checks two things:
+1. The type of the variable
+2. The value of the variable
+
+// a string of 24 and a number of 24 does not equate
+'24' === 24 // False
+'24' !== 24 // True
+
+When comparing things with equal ( == ) or unequal ( != ) JavaScript converts (or casts) the types so they match each other.
+
+Generally, JavaScript tries to convert all types to numbers when you use a conversion operator.
+
+Booleans can also be converted into numbers.
+true becomes 1
+false becomes 0
+
+0 == false // True
+1 == true // True
+2 == true // False
+
+
+### Whenever you compare for equality, always use the strict versions ( === ) or ( !== )
+
+### Comparing Objects:
+When you compare objects with equality operators, you are asking JavaScript to check if the two objects have the same reference (same identity card).
+
+// two objects never equate, because they point to different references
+const zell = { isHavingFun: true }
+const vincy = { isHavingFun: true }
+
+console.log(zell === vincy) // false
+console.log(zell == vincy) // false
+
+### To check if two objects have the same property-value pairs, you need to compare every property-value pairs between the two objects.
+
+Truthy and falsey
+
+If you write a single variable as the condition of an if/else statement, JavaScript checks for a truthy or a falsey value.
+
+const numApples = 135
+
+if (numApples) {
+	// Eat an apple
+} else {
+	// Buy an apple
+}
+
+### A falsey value is a value that evaluates to false when converted into a boolean.
+Six possible falsey values in JavaScript.
+1. false
+2. undefined
+3. Null
+4. 0 (numeric zero)
+5. "" (empty string)
+6. NaN (not a number)
+
+### A truthy value is a value that evaluates to true when converted into a boolean. In the case for numbers, anything that is not 0 converts to true.
+
+
+### Automatic type conversions to truthy and falsey values are highly encouraged in JavaScript. They make code shorter and easier to comprehend.
+
+
+For example, if you want to check if a string is empty, you can use the string in the condition straightaway.
+
+const str = ''
+
+if (str) {
+  // Do something if string is not empty
+} else {
+  // Do something if string is empty
+}
+
+Exercises:
+
+const james = 22
+const valerie = 25
+const kenneth = 27
+
+James is 22 years old, Valerie is 25 years old, Kenneth is 27 years old. Answer the following questions with the above code:
+
+1. Make an if/else statement to check if you are younger than James.
+if (32 < james) {
+	// I am younger
+} else {
+	// I am older
+}
+
+2. Make an else if statement within your if/else to check if you are older than Valerie.
+if (32 < james) {
+	// I am younger than James
+} else if (32 > valerie) {
+	// I am older than Valerie
+} else {
+	// I am older than James
+}
+
+3. Make another else if statement to check if you're as old as Kenneth.
+if (james >= 32) {
+	// I am younger than James
+} else if (valerie < 32) {
+	// I am older than Valerie
+} else if (32 === kenneth) {
+	// I am as old as Kenneth
+} else {
+	// I am older than James
+}
+
+When you do the above exercise, try comparing values with
+
+> and >=
+< and <=
+===
+!==
+
+
+Answer the rest of the questions below with reference to the following code:
+
+const someValue = 22
+if (someValue) {
+  // Executes if true
+  console.log('True')
+} else {
+  // Executes if false
+  console.log('False')
+}
+
+Would the if statement above execute:
+
+If someValue is false? no
+If someValue is true? yes
+If someValue is null? no
+If someValue is undefined? no
+If someValue is 0? no
+If someValue is -1? yes
+If someValue is ''? no
+If someValue is 'has a value!'? yes
+If someValue is {}? yes
+If someValue is { isHavingFun: true }? yes
+If someValue is []? yes
+If someValue is ['one', 'two', 'three']? yes
+
+
+----------------------------------------------------------------
+The NOT operator ( ! ) flips truthy and falsey values around. Truthy values become false, and falsey values become true.
+
+console.log(!22) // false
+console.log(!false) // true
+
+The NOT operator can be used to eliminate else statements:
+
+const str = ''
+
+if(!str) {
+  // Only do something if string is empty (NOT truthy)
+}
+
+### Double negation
+
+!!someVariable
+
+!! here is called a double negation. It does the following:
+
+converts a truthy value to true
+converts a falsey value to false.
+
+Double negation is used to explicitly cast a truthy or falsey value into a boolean (true or false).
+
+Exercise:
+
+What values would you get for each of these expressions?
+
+!2550284	// false
+!true		// false
+!NaN		// true
+!{}			// false
+!!'Pandas are adorable!'	// true
+!!''		// false
+
+
+---------------------------------------------------------------------
+Null and Undefined
+
+undefined is a value that indicates the absence of a value.
+When something is not explicitly defined, it is undefined.
+
+let a
+console.log(a) // undefined
+
+If you have a function that returns nothing, the result of the function will be undefined.
+
+const returnsNothing = () => {}
+
+const test = returnsNothing()
+console.log(test) // undefined
+
+null is a value that is used to indicate "nothingness". Developers need to explicitly set a value to be null.
+
+const zell = {
+  firstName: 'Zell',
+  middleName: null,
+  lastName: 'Liew'
+}
+
+console.log(zell.middleName) // null
+
+
+null and undefined are different primitives.
+
+null === undefined // false
+
+--------------------------------------------------------------------
+The BOM and the DOM
