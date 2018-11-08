@@ -806,3 +806,102 @@ You can access it with document.
 ----------------------------------------------------------------------
 Selecting an Element
 
+To use JavaScript to select a HTML element, use the querySelector method.
+
+The document object contains a method called querySelector.
+
+const element = document.querySelector(selector)
+
+selector refers to the id, class, tag, or attribute of the element you want to select.
+The selectors are written the same way as you would write selectors in CSS.
+
+1. Select element with an id, prepend with #
+2. Select element with a class, prepend with .
+3. Select element with a tag, write tag name directly
+4. Select an element with an attribute, write the attribute in square ( [] ) brackets
+
+<div id="master-yoda">Yoda</div>
+<div class="class-of-assassins">Assassin</div>
+<p>The three little pigs</p>
+<div data-type="rocket">🚀</div>
+
+document.querySelector('#master-yoda')
+// => <div id="master-yoda">Yoda</div>
+
+document.querySelector('.class-of-assassins')
+// => <div class="class-of-assassins">Assassin</div>
+
+document.querySelector('p')
+// => <p>The three little pigs</p>
+
+document.querySelector('[data-type="rocket"]')
+// => <div data-type="rocket">🚀</div>
+
+### querySelector always returns the first element it finds.
+<ol class="humans">
+  <li>Gandalf</li>
+  <li>Saruman</li>
+  <li>Aragorn</li>
+  <li>Boromir</li>
+  <li>Faramir</li>
+</ol>
+
+const firstHuman = document.querySelector('li')
+console.log(firstHuman) // <li>Gandalf</li>
+
+### To select multiple elements, use querySelectorAll
+
+### Complex selectors can be done, but usually one selector is enough
+// DON'T DO THIS
+document.querySelector('div#master-yoda')
+// => <div id="master-yoda">Yoda</div>
+
+// DO THIS INSTEAD
+document.querySelector('#master-yoda')
+// => <div id="master-yoda">Yoda</div>
+
+### element.querySelector
+All elements also have the querySelector method. Helps you search for an element within another element.
+
+<ol class="humans">
+  <li>Gandalf</li>
+  <li>Saruman</li>
+  <li>Aragorn</li>
+  <li>Boromir</li>
+  <li>Faramir</li>
+</ol>
+
+Perform a search for the outer element first, followed by a search for the inner element.
+
+const humans = document.querySelector('.humans')
+const firstHuman = humans.querySelector('li')
+// => <li>Gandalf</li>
+
+Exercise:
+
+<ul id="star-wars-characters">
+  <li class="character luke" data-type="hero">Luke Skywalker</li>
+  <li class="character yoda" data-type="master">Yoda</li>
+  <li class="character badboy" data-type="villain">Darth Vader</li>
+</ul>
+
+1. Get the #star-wars-characters list with id and tag selectors.
+document.querySelector('#star-wars-characters')
+document.querySelector('ul')
+
+2. From the #star-wars-characters list, get the following:
+	i.   Luke Skywalker with class, tag and attribute selectors
+	document.querySelector('.character luke')
+	document.querySelector('li')
+	document.querySelector('[data-type="hero"]')
+	
+	ii.  Yoda with class and attribute selectors
+	document.querySelector('.character yoda')
+	document.querySelector('[data-type="master"]')
+	
+ 	iii. Darth Vader with class and attribute selectors
+	document.querySelector('.character badboy')
+	document.querySelector('[data-type="villain"]')
+	
+Notice how you can't select Yoda and Darth Vader with tags when you use querySelector.
+
