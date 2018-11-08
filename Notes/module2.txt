@@ -891,16 +891,16 @@ document.querySelector('ul')
 
 2. From the #star-wars-characters list, get the following:
 	i.   Luke Skywalker with class, tag and attribute selectors
-	document.querySelector('.character luke')
+	document.querySelector('.luke')
 	document.querySelector('li')
 	document.querySelector('[data-type="hero"]')
 	
 	ii.  Yoda with class and attribute selectors
-	document.querySelector('.character yoda')
+	document.querySelector('.yoda')
 	document.querySelector('[data-type="master"]')
 	
  	iii. Darth Vader with class and attribute selectors
-	document.querySelector('.character badboy')
+	document.querySelector('.badboy')
 	document.querySelector('[data-type="villain"]')
 	
 Notice how you can't select Yoda and Darth Vader with tags when you use querySelector.
