@@ -905,3 +905,211 @@ document.querySelector('ul')
 	
 Notice how you can't select Yoda and Darth Vader with tags when you use querySelector.
 
+-----------------------------------------------------------------------
+Changing CSS classes with JavaScript
+
+You should change classes with JavaScript. Change CSS with JavaScript less.
+Let CSS handle CSS stuff.
+
+### Adding a class
+To add a class, you use the add method. This method can be found within the classList property that exists for all elements.
+
+Element.classList.add('className')
+
+<p>This is a paragraph of text</p>
+
+const p = document.querySelector('p')
+p.classList.add('red')
+
+
+
+### Adding multiple classes at once 
+
+Pass in extra arguments into the add method.
+
+Element.classList.add('firstClass', 'secondClass', 'thirdClass')
+
+
+### Removing a class 
+
+Use the remove method in the classList property
+
+Element.classList.remove('className')
+
+<p>This is a paragraph of text</p>
+
+ const p = document.querySelector('p')
+ p.classList.remove('red')
+
+ Note: you don't need to add . before your classes when you use Element.classList.
+
+ ### Removing multiple classes at once.
+
+ Pass in extra arguments into the remove method.
+
+ Element.classList.remove('firstClass', 'secondClass', 'thirdClass')
+
+
+ ### Checking if a class exists
+
+ Use the contains method of the classList property.
+
+ Element.classList.contains('className')
+
+ The contains method is often used together with the if statement to check whether the class exists.
+
+ const div = document.querySelector('div')
+ if (div.classList.contains('superpower')) {
+	 // Do something if the div has the class '.superpower'
+ }
+
+
+### Toggling a class
+
+Toggling means this:
+1. Remove .red if .red exists
+2. Add .red if .red does not exist
+
+You can manually toggle classes with if/else statements, or use the toggle method.
+
+if (element.classList.contains('red')) {
+	element.classList.remove('red')
+} else {
+	element.classList.add('red')
+}
+
+Element.classList.toggle('red')
+
+
+Exercise
+
+Practice adding, removing, checking for classes and toggling classes with Element.classList. Work through the examples in this HTML:
+
+<div class="add">Add a "red" class to me!</div>
+document.querySelector('div').classList.add('red')
+
+<div class="remove">Remove the class, "remove" from me!</div>
+document.querySelector('.remove').classList.remove('remove')
+
+<div class="contains">
+  <div>Do I have a "blue" class?</div>
+  <div class="blue">Do I have a "blue" class?</div>
+</div>
+
+const contains = document.querySelector('.contains')
+const firstDiv = contains.querySelector('div')
+const secondDiv = contains.querySelector('.blue')
+firstDiv.classList.contains('blue')
+secondDiv.classList.contains('blue')
+
+<div class="toggle">Do I have a "red" class? If yes, remove it. If no, add it.</div>
+const toggle = document.querySelector('.toggle')
+toggle.classList.toggle('red')
+
+-------------------------------------------------------------------
+
+Listening to Events
+
+Events tell you something that has happened in JavaScript.
+
+If a user clicks on something, a click event fires.
+If a user hits a key on the keyboard, the keydown and keyup events are fired.
+
+List of all available JavaScript events:
+https://developer.mozilla.org/en-US/docs/Web/Events
+
+
+You need event listeners to listen to events in JavaScript.
+You can add event listeners to any element in the DOM.
+
+Element.addEventListener('event-name', function () {
+	// Do something
+})
+
+event-name is the name of the event you want to listen to. See the MDN link above.
+
+The function is code you want to execute when the event fires. This is called the event handler.
+
+### Listening for a click
+Listen for a click event on a <button> element.
+
+const button = document.querySelector('button')
+
+button.addEventListener('click', function () {
+	console.log('Button is clicked')
+})
+
+
+
+### Check if the listener exists
+
+For Firefox devtools, open up the Inspector tab. If an event is present on the Element, you'll see a tiny ev icon on the same line as the opening tag of the Element.
+
+For Chrome Devtools, you need to open up the console, and type getEventListeners(element), where element is the element you want to check for.
+
+
+
+### Changing the DOM through events
+
+Best way to change appearance of DOM through events is using CSS classes.
+
+You can change the DOM through event listeners and classes.
+
+const button = document.querySelector('button')
+
+button.addEventListener('click', function () {
+    // Note: document.body does the same as document.querySelector('body').
+    const body = document.body
+
+    body.classList.add('button-is-clicked')
+    button.classList.add('is-clicked')
+})
+
+### Click to change, click again to revert
+
+Use the classList.toggle method.
+
+const button = document.querySelector('button')
+
+button.addEventListener('click', function () {
+    // Note: document.body does the same as document.querySelector('body').
+    const body = document.body
+
+    body.classList.toggle('button-is-clicked')
+    button.classList.toggle('is-clicked')
+})
+
+### The Event Object
+
+All event listener callbacks accepts an argument.
+This argument is the event object.
+Usually abbreviated to evt or e.
+
+button.addEventListener('click', function (e) {
+	// Do something
+})
+
+Exercise:
+
+1. Write an click event listener. Log something into the console so you know the listener works.
+
+const button = document.querySelector('button')
+
+button.addEventListener('click', function () {
+	console.log('Something')
+})
+
+2. Check the existence of the listener with Firefox's devtools.
+
+
+3. Check the existence of the listener with Chrome Devtools.
+
+Click on the element in the Elements tab, then in the console tab:
+
+getEventListeners($0)
+
+4. Add a class to the component when it is clicked. Remove a class from the component when it is clicked again.
+
+button.addEventListener('click', function () {
+    button.classList.toggle('is-clicked')
+})

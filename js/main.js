@@ -1,15 +1,17 @@
-// This is a comment
-const tables = 4 // 4 tables in the room
-console.log(44) // 44
+const button = document.querySelector('button')
 
-/* This is a comment */
+// button.addEventListener('click', function () {
+//     // Note: document.body does the same as document.querySelector('body').
+//     const body = document.body
 
-/* 
-    Everything
-    is
-    commented
-    in
-    this
-    example.
-*/
+//     body.classList.toggle('button-is-clicked')
+//     button.classList.toggle('is-clicked')
+// })
 
+// button.addEventListener('click', function () {
+//     console.log('Something')
+// })
+
+button.addEventListener('click', function () {
+    button.classList.toggle('is-clicked')
+})
