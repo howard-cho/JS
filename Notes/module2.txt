@@ -1113,3 +1113,114 @@ getEventListeners($0)
 button.addEventListener('click', function () {
     button.classList.toggle('is-clicked')
 })
+
+--------------------------------------------------------
+
+Callbacks
+
+A callback is a function that is passed into another function as an argument to be executed later.
+
+Callback - a function that is used as an argument in another function call
+
+Example of a callback in use is the event listener.
+
+button.addEventListener('click', function () {
+	// Do something
+})
+
+// Can be re-written as follows:
+
+function callback () {
+	// do something
+}
+
+button.addEventListener('click', callback)
+
+Callbacks are useful for two situation:
+1. They allow code to be swapped easily
+2. They prevent blocking operations in asynchronous code
+
+### Allowing code to be swapped easily
+
+You can add multiple event listeners to an element.
+
+button.addEventListener('click', function () {
+	button.classList.add('red')
+})
+
+// Create another event listener on same button
+
+button.addEventListener('click', function () {
+	console.log('Another event listener')
+})
+
+### Preventing blocking operations in asynchronous code
+
+Synchronous code - code that executes in a top to bottom, left to right manner. Sequentially, waiting until one code has finished before the next line begins.
+
+Asynchronous code - code that doesn't follow the top to bottom, left to right manner. An event listener is an example of asynchronous code.
+
+button.addEventListener('click', function () {
+	// Do something
+})
+
+The callback doesn't get executed until a user clicks on a button.
+
+Single threading - JavaScript can only do one thing at a time. It cannot do anything else in the meantime, until the one thing gets completed.
+
+Blocking - If you ask JavaScript to do something else in the meantime, it doesn't respond.
+
+Asynchronous operations is important because we don't want JavaScript to stare and wait for a user to click on a button before doing anything else.
+
+
+### The Event Loop
+
+Todo-list -> Call stack
+Waiting-list -> Web apis
+Mental Note -> Event queue
+
+
+
+Callbacks allow us to give JavaScript instructions in advance without stopping the entire operation.
+
+When you ask JavaScript to watch a button for a click, it puts the "watch button" into the waiting-list and goes on its other chores. When the button finally gets a click, JavaScript activates the callback, then goes on with life.
+
+### Creating your own callbacks
+
+To create a callback, you need two things:
+1. Callback-accepting function
+2. A callback
+
+function callbackAcceptingFunction (callback) {
+	// Execute callback here
+	callback()
+}
+
+function callback () {
+	// Do something here
+	console.log('callback activated!')
+}
+
+callbackAcceptingFunction(callback) // callback activated
+
+
+The callback can accept any number of arguments. The number, type and value of the arguments passed into callback is determined by the callbackAcceptingFunction.
+
+function callbackAcceptingFunction (callback) {
+	callback('Hello', 'baby brother')
+}
+
+function callback (arg1, arg2) {
+	console.log(arg1) // Hello
+	console.log(arg2) // baby brother
+}
+
+callbackAcceptingFunction(callback)
+
+When you pass a callback as a parameter into a callbackAcceptingFunction, you pass only the reference to the callback. You don't execute it.
+The callbackAcceptingFunction will help you execute the callback.
+
+// Notice you don't execute the callbacks with `callback()`
+callbackAcceptingFunction(callback)
+
+### A callback is a function that is passed into another function as an argument to be executed later.
